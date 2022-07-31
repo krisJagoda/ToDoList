@@ -3,7 +3,6 @@ let input, error, addBtn, ulList
 const main = () => {
     prepareDOMElements()
     prepareDOMEvents()
-    addNewTask()
 }
 
 const prepareDOMElements = () => {
@@ -14,19 +13,21 @@ const prepareDOMElements = () => {
 }
 
 const prepareDOMEvents = () => {
-
+    addBtn.addEventListener('click', addNewTask)
 }
 
 const addNewTask = () => {
-    const li = document.createElement('li')
     const inputVal = input.value
-    console.log(inputVal)
-    if (typeof inputVal === 'string' && inputVal.trim().length === 0) {
-        // create new error message and new paragraph for user error.innerText = 'Enter a task'
-    } else {
-        console.log(typeof inputVal, 'works')
-    }
 
+    if (inputVal.trim().length !== 0) {
+        error.textContent = 'New task added'
+        const todo = document.createElement('li')
+        todo.textContent = input.value
+        ulList.append(todo)
+        input.value = ''
+    } else {
+        error.textContent = 'No tasks added: add a new task'
+    }
 }
 
 document.addEventListener('DOMContentLoaded', main)
