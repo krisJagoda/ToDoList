@@ -67,7 +67,7 @@ const checkButton = (e) => {
     } else if (e.target.matches('.edit')) {
 
     } else if (e.target.matches('.delete')) {
-        e.target.closest('li').classList.toggle('delete')
+        e.target.closest('li').remove()
     }
 }
 
