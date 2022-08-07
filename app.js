@@ -61,12 +61,13 @@ const createToolsArea = () => {
 const checkButton = (e) => {
 
     if (e.target.matches('.complete')) {
-        e.target.closest('li').classList.add('completed')
-        e.target.classList.add('completed')
+        e.target.classList.toggle('completed')
+        e.target.closest('li').classList.toggle('completed')
+
     } else if (e.target.matches('.edit')) {
 
     } else if (e.target.matches('.delete')) {
-
+        e.target.closest('li').classList.toggle('delete')
     }
 }
 

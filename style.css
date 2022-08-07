@@ -122,6 +122,7 @@ h1 {
 
 .delete {
     color: tomato;
+    text-decoration: line-through;
 }
 
 .completed {
