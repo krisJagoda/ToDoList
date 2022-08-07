@@ -14,6 +14,14 @@ const prepareDOMElements = () => {
 
 const prepareDOMEvents = () => {
     addBtn.addEventListener('click', addNewTask)
+
+    addBtn.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' || e.key === 'Return') {
+            return addNewTask()
+        }
+    })
+
+    ulList.addEventListener('click', checkButton)
 }
 
 const addNewTask = () => {
@@ -49,5 +57,18 @@ const createToolsArea = () => {
     div.append(btn1, btn2, btn3)
     return div
 }
+
+const checkButton = (e) => {
+
+    if (e.target.matches('.complete')) {
+        e.target.closest('li').classList.add('completed')
+        e.target.classList.add('completed')
+    } else if (e.target.matches('.edit')) {
+
+    } else if (e.target.matches('.delete')) {
+
+    }
+}
+
 
 document.addEventListener('DOMContentLoaded', main)
