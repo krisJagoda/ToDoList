@@ -1,4 +1,4 @@
-let input, error, addBtn, ulList, tools, btn1, btn2, btn3, popup
+let input, error, addBtn, ulList, tools, btn1, btn2, btn3, popup, task, acceptBtn, rejectBtn
 
 const main = () => {
     prepareDOMElements()
@@ -10,10 +10,10 @@ const prepareDOMElements = () => {
     error = document.querySelector('.error-info')
     addBtn = document.querySelector('.btn-add')
     ulList = document.querySelector('.todoListUl')
-    tools = document.createElement('div')
-    btn1 = document.createElement('button')
-    btn2 = document.createElement('button')
-    btn3 = document.createElement('button')
+    popup = document.querySelector('.popup')
+    task = document.querySelector('.popup-input')
+    acceptBtn = document.querySelector('.accept')
+    rejectBtn = document.querySelector('.cancel')
 }
 
 const prepareDOMEvents = () => {
@@ -45,6 +45,10 @@ const addNewTask = () => {
 }
 
 const createToolsArea = () => {
+    tools = document.createElement('div')
+    btn1 = document.createElement('button')
+    btn2 = document.createElement('button')
+    btn3 = document.createElement('button')
 
     tools.setAttribute('class', 'tools')
     btn1.setAttribute('class', 'complete')
@@ -65,13 +69,31 @@ const checkButton = (e) => {
         e.target.closest('li').classList.toggle('completed')
 
     } else if (e.target.matches('.edit')) {
-        editContent(e)
+        editTask()
     } else if (e.target.matches('.delete')) {
         e.target.closest('li').remove()
     }
 }
 
-const editContent = (e) => {
+const editTask = () => {
+    popup.style.display = 'flex'
+
+    acceptBtn.addEventListener('click', () => {
+        const text = task.value
+        if (text.trim().length !== 0){
+            // add the new text from input to li text area
+
+            popup.style.display = 'none'
+
+        } else {
+            error.textContent = 'Enter correct value in edit window'
+        }
+
+    })
+
+    rejectBtn.addEventListener('click', () => {
+        popup.style.display = 'none'
+    })
 
 }
 

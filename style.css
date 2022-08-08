@@ -137,7 +137,7 @@ h1 {
     align-items: center;
     flex-direction: column;
     position: fixed;
-    bottom: 20px;
+    bottom: 22%;
     left: 50%;
     transform: translateX(-50%);
     width: 800px;
