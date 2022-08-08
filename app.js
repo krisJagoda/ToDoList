@@ -15,7 +15,7 @@ const prepareDOMElements = () => {
 const prepareDOMEvents = () => {
     addBtn.addEventListener('click', addNewTask)
 
-    addBtn.addEventListener('keypress', (e) => {
+    window.addEventListener('keypress', (e) => {
         if (e.key === 'Enter' || e.key === 'Return') {
             return addNewTask()
         }
