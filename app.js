@@ -34,10 +34,11 @@ const addNewTask = () => {
     if (inputVal.trim().length !== 0) {
         error.textContent = 'New task added'
         const todo = document.createElement('li')
+        const span = document.createElement('span')
         const div = createToolsArea()
-        todo.textContent = input.value
+        span.textContent = input.value
         ulList.append(todo)
-        todo.append(div)
+        todo.append(span, div)
         input.value = ''
     } else {
         error.textContent = 'No tasks added: add a new task'
@@ -69,32 +70,32 @@ const checkButton = (e) => {
         e.target.closest('li').classList.toggle('completed')
 
     } else if (e.target.matches('.edit')) {
-        editTask()
+        editTask(e.target)
     } else if (e.target.matches('.delete')) {
         e.target.closest('li').remove()
     }
 }
 
-const editTask = () => {
+const editTask = (target) => {
     popup.style.display = 'flex'
 
     acceptBtn.addEventListener('click', () => {
-        const text = task.value
-        if (text.trim().length !== 0){
-            // add the new text from input to li text area
-
-            popup.style.display = 'none'
-
-        } else {
-            error.textContent = 'Enter correct value in edit window'
-        }
-
+        addChangeToTask(target)
     })
 
     rejectBtn.addEventListener('click', () => {
         popup.style.display = 'none'
     })
 
+}
+const addChangeToTask = (target) => {
+    const text = task.value
+    if (text.trim().length !== 0) {
+        target.parentNode.previousSibling.textContent = text
+        popup.style.display = 'none'
+    } else {
+        error.textContent = 'Enter correct value in edit window'
+    }
 }
 
 
