@@ -1,6 +1,6 @@
 # ToDoList
 
-This is a simple ToDo List in vanilla Javascript:
+This is a simple ToDo List in JavaScript:
 
 1. Tasks can be added dynamically.
 2. Tasks can be modified, edited or deleted when needed.
